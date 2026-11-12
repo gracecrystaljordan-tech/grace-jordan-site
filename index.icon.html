@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grace Jordan</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Grace Jordan is an accounting and finance professional on the CPA track in Provo, Utah, available for advisory work and speaking engagements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: calm single page. Light mist ground, sage and deep green accents, arched photo frames, one dark band for speaking. */
+:root {
+  --mist: #f3f7f4;
+  --paper: #ffffff;
+  --sage: #7d9b8c;
+  --sage-soft: #dfeae3;
+  --deep: #1c3a37;
+  --ink: #1e2b27;
+  --sand: #d9cbb2;
+  --line: #d9e3dd;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0;
+  background: var(--mist);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; color: var(--deep); line-height: 1.1; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.8rem, 6.5vw, 4.6rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(2.1rem, 4.2vw, 3rem); }
+h3 { font-size: 1.55rem; }
+p { margin: 0; }
+.wrap { width: min(1100px, 100% - 40px); margin-inline: auto; }
+.eyebrow { display: flex; align-items: center; gap: 14px; font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; color: #4f6f61; font-weight: 600; margin-bottom: 18px; }
+.eyebrow::before { content: ""; width: 30px; height: 1px; background: currentColor; }
+.lede { font-size: 1.15rem; max-width: 56ch; }
+:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; border-radius: 4px; }
+
+/* Header */
+header.top { position: sticky; top: 0; z-index: 10; background: rgba(243,247,244,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; padding-block: 6px; }
+.brand { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--deep); text-decoration: none; }
+nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+nav a { text-decoration: none; font-size: 0.95rem; font-weight: 500; color: var(--ink); }
+nav a:hover { color: var(--sage); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border-radius: 999px; font-weight: 600; font-size: 0.98rem; text-decoration: none; border: 1.5px solid var(--deep); transition: transform .2s ease, background .2s ease, color .2s ease; }
+.btn.primary { background: var(--deep); color: #fff; }
+.btn.primary:hover { background: #274a46; transform: translateY(-2px); }
+.btn.ghost { color: var(--deep); background: transparent; }
+.btn.ghost:hover { background: var(--sage-soft); transform: translateY(-2px); }
+.btn.light { background: #fff; color: var(--deep); border-color: #fff; }
+.btn.light:hover { background: var(--sage-soft); transform: translateY(-2px); }
+.btn svg { width: 18px; height: 18px; fill: currentColor; }
+.btn-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+
+/* Hero */
+.hero { padding: 64px 0 80px; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.hero h1 em { font-style: italic; color: var(--sage); }
+.hero .role { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 24px; color: var(--deep); }
+.hero .lede { margin-top: 18px; }
+.arch { border-radius: 999px 999px 24px 24px; overflow: hidden; background: var(--sage-soft); aspect-ratio: 4 / 5; box-shadow: 0 30px 60px -30px rgba(28,58,55,.45); }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.creds { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; padding: 0; list-style: none; }
+.creds li { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px; font-size: 0.88rem; font-weight: 500; }
+
+/* Sections */
+section { padding: 84px 0; }
+section.alt { background: var(--paper); }
+.split { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: center; }
+.split.flip { grid-template-columns: 1.2fr 0.8fr; }
+.photo { border-radius: 24px; overflow: hidden; background: var(--sage-soft); }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo.tall { aspect-ratio: 4 / 5; }
+.photo.tall img { object-position: 45% 50%; }
+.about-text p + p { margin-top: 16px; }
+.about-text h2 { margin-bottom: 22px; }
+.belief { margin-top: 30px; padding: 20px 24px; border-left: 3px solid var(--sage); background: var(--sage-soft); border-radius: 0 14px 14px 0; font-family: var(--font-display); font-size: 1.55rem; line-height: 1.3; color: var(--deep); }
+
+/* Services */
+.section-head { max-width: 640px; margin-bottom: 40px; }
+.section-head h2 { margin-bottom: 14px; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.card { background: var(--mist); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+.card .n { font-family: var(--font-display); font-size: 1.1rem; color: var(--sage); font-weight: 600; }
+.card p { font-size: 0.96rem; color: #34433e; }
+.desk { margin-top: 44px; border-radius: 24px; overflow: hidden; aspect-ratio: 21 / 9; }
+.desk img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+
+/* Speaking */
+.speaking { background: var(--deep); color: #e9f0ec; }
+.speaking h2, .speaking h3 { color: #fff; }
+.speaking .eyebrow { color: #a9c4b6; }
+.speaking h2 { margin-bottom: 16px; }
+.speaking .split { grid-template-columns: 0.75fr 1.25fr; }
+.speaking .photo { aspect-ratio: 4 / 5; background: #14292a; }
+.speaking .photo img { object-position: 50% 20%; }
+.topics { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 12px; }
+.topics li { border: 1px solid rgba(255,255,255,.18); border-radius: 16px; padding: 16px 20px; }
+.topics strong { display: block; font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: #fff; }
+.topics span { font-size: 0.92rem; color: #d3e0d9; letter-spacing: 0.01em; }
+.stage { margin-top: 24px; font-size: 0.97rem; color: #cfdcd5; }
+
+/* Experience */
+.cols { display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; }
+.timeline { display: grid; gap: 0; }
+.job { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+.job:first-child { border-top: 0; padding-top: 0; }
+.job .when { font-size: 0.74rem; font-weight: 600; color: #4f6f61; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 6px; }
+.job h3 { font-size: 1.4rem; }
+.job .org { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 8px; color: #4f6f61; }
+.job ul { margin: 12px 0 0; padding-left: 18px; }
+.job li { margin-bottom: 6px; font-size: 0.97rem; }
+.side h3 { margin-bottom: 14px; }
+.side .block + .block { margin-top: 38px; }
+.edu { padding: 16px 0; border-top: 1px solid var(--line); }
+.edu:first-of-type { border-top: 0; padding-top: 0; }
+.edu b { display: block; font-weight: 600; }
+.edu small { font-size: 0.88rem; color: #4d5f58; }
+.strengths { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 9px; }
+.strengths li { background: var(--sage-soft); border-radius: 999px; padding: 7px 15px; font-size: 0.9rem; font-weight: 500; color: var(--deep); }
+
+/* Passions */
+.life { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.life .photo { aspect-ratio: 4 / 5; }
+.life .photo img { object-position: 50% 30%; }
+.passions { list-style: none; padding: 0; margin: 26px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.passions li.wide { grid-column: 1 / -1; }
+.passions li { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-weight: 500; }
+
+/* Contact */
+.contact { background: var(--sage-soft); }
+.contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start; }
+.contact h2 { margin-bottom: 18px; }
+.contact .plain { margin-top: 26px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #4f6f61; line-height: 1.9; }
+.form { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 34px; display: grid; gap: 18px; box-shadow: 0 30px 60px -40px rgba(28,58,55,.35); }
+.form h3 { font-size: 1.7rem; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: grid; gap: 7px; }
+.field label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #4f6f61; }
+.field input, .field select, .field textarea { font: inherit; font-size: 0.98rem; color: var(--ink); background: var(--mist); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; width: 100%; }
+.field textarea { min-height: 140px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--sage); outline-offset: 1px; border-color: var(--sage); background: #fff; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form .btn { justify-self: start; cursor: pointer; font-family: inherit; }
+.form-note { font-size: 0.85rem; color: #4d5f58; }
+.form-status { border-radius: 14px; padding: 16px 18px; background: var(--sage-soft); font-size: 0.95rem; }
+.form-status textarea { width: 100%; margin-top: 10px; min-height: 120px; font: inherit; font-size: 0.9rem; border: 1px solid var(--line); border-radius: 10px; padding: 10px; background: #fff; color: var(--ink); }
+.form-status .btn-row { margin-top: 12px; }
+.form-status .btn { padding: 10px 18px; font-size: 0.9rem; }
+footer { padding: 28px 0; font-size: 0.88rem; color: #4d5f58; text-align: center; }
+
+@media (max-width: 860px) {
+  body { font-size: 16.5px; }
+  section { padding: 60px 0; }
+  .hero { padding: 36px 0 56px; }
+  .hero .wrap, .split, .split.flip, .speaking .split, .cols, .life, .contact-grid { grid-template-columns: 1fr; gap: 34px; }
+  .field-row { grid-template-columns: 1fr; }
+  .form { padding: 24px; }
+  .hero .arch { max-width: 420px; margin-inline: auto; order: -1; }
+  .cards { grid-template-columns: 1fr; }
+  .photo.tall, .speaking .photo, .life .photo { max-width: 420px; }
+  .job { grid-template-columns: 1fr; gap: 6px; }
+  .desk { aspect-ratio: 4 / 3; }
+  nav ul { gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Grace Jordan</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work with me</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-label="Introduction">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Accounting &amp; Finance · CPA Track</p>
+        <h1>Clear numbers. Calm decisions. <em>Anything is possible.</em></h1>
+        <p class="role">Grace Jordan, Finance Analyst · Provo, Utah</p>
+        <p class="lede">I help business owners and teams see exactly where their money is going, so every next step feels steady and achievable.</p>
+        <div class="btn-row">
+          <a class="btn primary" href="#contact">Work with me</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/cashreadyadvisory/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm6.5 0h3.84v1.54h.06c.53-1 1.84-2.07 3.79-2.07 4.05 0 4.8 2.67 4.8 6.13V21h-4v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.58V21h-4V9.75z"/></svg>
+            Connect on LinkedIn
+          </a>
+        </div>
+        <ul class="creds">
+          <li>BS Accounting, UVU · Dec 2026</li>
+          <li>MAcc, CPA Track · May 2028</li>
+          <li>MOS Excel Certified</li>
+        </ul>
+      </div>
+      <div class="arch">
+        <img src="img/bench.jpg" alt="Grace Jordan seated on a park bench in a patterned black blouse and glasses, smiling softly at the camera" width="1400" height="2100">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="alt">
+    <div class="wrap split">
+      <div class="photo tall">
+        <img src="img/about.jpg" alt="Grace Jordan smiling softly beside a stone column, with trees and a city building softly blurred behind her" width="2000" height="1333">
+      </div>
+      <div class="about-text">
+        <p class="eyebrow">About</p>
+        <h2>Numbers with a human point of view</h2>
+        <p>I am an accounting student finishing my BS at Utah Valley University in December 2026, with a Master of Accountancy and the CPA path ahead. I am also a mom, which keeps me practical, organized and very good at focusing on what matters most.</p>
+        <p>My work so far has taken me from running the daily books of a retail store to analyzing NGO performance in Accra, Ghana and presenting findings in Tokyo. The common thread is the same: turning messy data into something people can trust and act on.</p>
+        <p>I believe most people and businesses can do far more than they think. Good financial clarity is often the first thing that makes the next bold step feel possible.</p>
+        <p class="belief">Anything is possible, and the numbers can show you the path.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Work with me</p>
+        <h2>Cash flow clarity for business owners</h2>
+        <p class="lede">Through CashReady Advisory, I help owners understand where cash is, where it is going and what to fix first.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="n">01</span>
+          <h3>Cash visibility diagnostic</h3>
+          <p>A focused working session that maps where your cash sits today and ranks the changes that will make the biggest difference.</p>
+        </article>
+        <article class="card">
+          <span class="n">02</span>
+          <h3>Reconciliation and reporting</h3>
+          <p>Accurate month-end support, expense and rate reconciliation and clean reports, built on advanced Excel skills (Microsoft certified).</p>
+        </article>
+        <article class="card">
+          <span class="n">03</span>
+          <h3>Ongoing cash flow support</h3>
+          <p>A steady rhythm of check-ins and updates, so your numbers stay current and your decisions stay calm.</p>
+        </article>
+      </div>
+      <div class="desk">
+        <img src="img/desk.jpg" alt="Grace Jordan working at a laptop at a conference table" width="1400" height="934">
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking" class="speaking">
+    <div class="wrap split">
+      <div class="photo">
+        <img src="img/dark.jpg" alt="Grace Jordan smiling with her arms crossed against a dark backdrop" width="1200" height="1800">
+      </div>
+      <div>
+        <p class="eyebrow">Speaking</p>
+        <h2>Finance talks that leave people encouraged</h2>
+        <p class="lede">I speak to student groups, professional associations and business audiences about finance in plain language and with real energy.</p>
+        <ul class="topics">
+          <li><strong>Cash flow clarity for growing businesses</strong><span>How to see your money, spot problems early and plan with confidence.</span></li>
+          <li><strong>Turning data into decisions</strong><span>Practical ways to analyze, present and explain numbers to any audience.</span></li>
+          <li><strong>The possibility mindset in an accounting career</strong><span>Building a CPA path, a business and a family without waiting for perfect timing.</span></li>
+        </ul>
+        <p class="stage">Stage experience: presented research findings at an academic conference in Tokyo, presented at the Growth and Prosperity Conference (November 2023) and taught statistics fundamentals to a class of 150 students.</p>
+        <div class="btn-row">
+          <a class="btn light" href="#contact">Invite me to speak</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap cols">
+      <div>
+        <p class="eyebrow">Experience</p>
+        <h2 style="margin-bottom:34px">Where I have worked</h2>
+        <div class="timeline">
+          <div class="job">
+            <div class="when">Aug 2023 – May 2024</div>
+            <div>
+              <h3>Statistical Research Assistant</h3>
+              <p class="org">UVU Strategic Management</p>
+              <ul>
+                <li>Compiled and analyzed quantitative data on NGO performance during a research assignment in Accra, Ghana.</li>
+                <li>Presented data-driven findings at an academic conference in Tokyo, Japan.</li>
+                <li>Taught statistics fundamentals to a class of 150 students.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="job">
+            <div class="when">Aug 2023 – May 2024</div>
+            <div>
+              <h3>City Planning Analyst</h3>
+              <p class="org">Utah Chamber of Commerce</p>
+              <ul>
+                <li>Compiled and reconciled data on employment, pay and housing to support regional financial and planning reports.</li>
+                <li>Presented analysis at the Growth and Prosperity Conference (November 2023).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="job">
+            <div class="when">Nov 2022 – Aug 2023</div>
+            <div>
+              <h3>Store Manager</h3>
+              <p class="org">Ready Gunner</p>
+              <ul>
+                <li>Reconciled transaction records, paperwork and inventory serial numbers against point-of-sale data to keep everything accurate.</li>
+                <li>Processed and balanced daily financial transactions, opening and closing POS systems and cash registers.</li>
+                <li>Trained employees and conducted monthly performance reviews.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="job">
+            <div class="when">2023</div>
+            <div>
+              <h3>Best Practices &amp; Communications</h3>
+              <p class="org">Beta Alpha Psi</p>
+              <ul>
+                <li>Won 3rd place at the Beta Alpha Psi Best Practices competition in Dallas, TX.</li>
+                <li>Built a scheduling database to track and coordinate deadlines across accounting firms and UVU representatives.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="side">
+        <div class="block">
+          <h3>Education</h3>
+          <div class="edu"><b>Master of Accountancy, CPA Track</b><small>Utah Valley University · Expected May 2028</small></div>
+          <div class="edu"><b>BS Accounting</b><small>Utah Valley University · Expected Dec 2026 · Major GPA 3.6</small></div>
+          <div class="edu"><b>Microsoft Office Specialist, Excel</b><small>Certification</small></div>
+        </div>
+        <div class="block">
+          <h3>Core strengths</h3>
+          <ul class="strengths">
+            <li>Advanced Excel</li>
+            <li>Expense &amp; rate reconciliation</li>
+            <li>Month-end reporting support</li>
+            <li>Remote work reliability</li>
+            <li>Written communication</li>
+            <li>Verbal communication</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="alt" aria-label="Beyond work">
+    <div class="wrap life">
+      <div class="photo">
+        <img src="img/profile.jpg" alt="Close portrait of Grace Jordan looking thoughtfully to the side" width="1200" height="1800">
+      </div>
+      <div>
+        <p class="eyebrow">Beyond the numbers</p>
+        <h2>What keeps me grounded</h2>
+        <p class="lede" style="margin-top:14px">A calm mind and a full life make for better judgment. These are the things I come back to.</p>
+        <ul class="passions">
+          <li>Motherhood</li>
+          <li>Piano</li>
+          <li>Reading</li>
+          <li>Journaling</li>
+          <li>Meditating</li>
+          <li>Yoga</li>
+          <li class="wide">Believing in the Impossible</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+      <p class="eyebrow">Contact</p>
+      <h2>Let us talk about what is possible</h2>
+      <p class="lede">Whether you need a clearer view of your cash or a speaker for your next event, I would love to hear from you.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="https://www.linkedin.com/in/cashreadyadvisory/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm6.5 0h3.84v1.54h.06c.53-1 1.84-2.07 3.79-2.07 4.05 0 4.8 2.67 4.8 6.13V21h-4v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.58V21h-4V9.75z"/></svg>
+          Message me on LinkedIn
+        </a>
+        <a class="btn ghost" href="mailto:grace.crystal.jordan@gmail.com">Send an email</a>
+      </div>
+      <p class="plain">grace.crystal.jordan@gmail.com<br>Provo, Utah</p>
+      </div>
+
+      <form class="form" id="contact-form" aria-labelledby="form-title">
+        <h3 id="form-title">Send me a message</h3>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-topic">I am reaching out about</label>
+            <select id="f-topic" name="topic" required>
+              <option value="Cash flow advisory">Cash flow advisory</option>
+              <option value="A speaking engagement">A speaking engagement</option>
+              <option value="Something else">Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-org">Organization (optional)</label>
+            <input id="f-org" name="organization" type="text" autocomplete="organization">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" required></textarea>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="f-site">Leave this field empty</label>
+          <input id="f-site" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="btn primary" type="submit">Send message</button>
+        <p class="form-note">I read every message personally.</p>
+        <div class="form-status" id="form-status" role="status" aria-live="polite" hidden></div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Grace Jordan · CashReady Advisory</div>
+</footer>
+
+<script>
+(function () {
+  // To receive messages directly, create a free form at formspree.io (or similar) and paste its URL here.
+  var FORM_ENDPOINT = "https://formspree.io/f/xqpqkdrn";
+  var TO = "grace.crystal.jordan@gmail.com";
+  var form = document.getElementById("contact-form");
+  var status = document.getElementById("form-status");
+  if (!form) return;
+
+  function show(html) { status.hidden = false; status.innerHTML = html; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var d = new FormData(form);
+    if (d.get("website")) return; // spam trap
+    var name = d.get("name"), email = d.get("email"), topic = d.get("topic"), org = d.get("organization") || "", msg = d.get("message");
+    var body = "Name: " + name + "\nEmail: " + email + "\nAbout: " + topic + (org ? "\nOrganization: " + org : "") + "\n\n" + msg;
+    var subject = "Website inquiry: " + topic;
+
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ name: name, email: email, topic: topic, organization: org, message: msg }) })
+        .then(function (r) {
+          if (!r.ok) throw new Error("bad");
+          form.reset();
+          show("Thank you, " + esc(name) + ". Your message is on its way and I will reply soon.");
+        })
+        .catch(function () { show("Your message did not go through. Please email me directly at " + esc(TO) + "."); });
+      return;
+    }
+
+    var href = "mailto:" + TO + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    show("Your message is ready. Copy it and send it to <strong>" + esc(TO) + "</strong>, or open it in your email app." +
+      "<textarea id=\"form-copy\" readonly>" + esc(body) + "</textarea>" +
+      "<div class=\"btn-row\"><button type=\"button\" class=\"btn ghost\" id=\"copy-btn\">Copy message</button>" +
+      "<a class=\"btn ghost\" href=\"" + href + "\">Open in email app</a></div>");
+    var btn = document.getElementById("copy-btn");
+    btn.addEventListener("click", function () {
+      var ta = document.getElementById("form-copy");
+      ta.select();
+      try { navigator.clipboard.writeText(ta.value).then(function () { btn.textContent = "Copied"; }, function () { document.execCommand && document.execCommand("copy"); btn.textContent = "Copied"; }); }
+      catch (err) { try { document.execCommand("copy"); btn.textContent = "Copied"; } catch (e2) {} }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
